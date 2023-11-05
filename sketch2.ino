@@ -7,8 +7,15 @@ DS1302 rtc(8, 7, 6);
 dht DHT;
 #define DHT11_PIN 5
 
+int r = 13;
+int g = 12;
+int b = 11;
+
 void setup()
 {
+  pinMode(r, OUTPUT);
+  pinMode(g, OUTPUT);
+  pinMode(b, OUTPUT);
   rtc.halt(false);
   lcd.init();
   lcd.backlight();
@@ -28,5 +35,17 @@ void loop()
   lcd.print("C  ");
   lcd.print(DHT.humidity);
   lcd.print("%");
+  if (DHT.humidity > 60.00)
+  {
+    digitalWrite(b, LOW); 
+    digitalWrite(g, HIGH); //включаем красный;
+  }
+  else
+  {
+    digitalWrite(g, LOW);
+    digitalWrite(b, HIGH);
+  }
   delay(5000);
+  
+  
 }
