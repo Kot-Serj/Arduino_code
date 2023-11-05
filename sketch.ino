@@ -1,8 +1,7 @@
 
 // Сначало запускать этот кож для синхранизации времени на часах
 
-
-#include <ThreeWire.h>                                
+#include <ThreeWire.h>
 #include <RtcDS1302.h>                                
 ThreeWire myWire(7,6,8);                              
 RtcDS1302<ThreeWire> Rtc(myWire);
